@@ -72,8 +72,8 @@
           <a href="#turtledoves"><span class="number">4</span></a>
           <span style="background-image:url('images/products/ph.jpg')" class="product"></span>
         </li>
-        <li class="gift tk-futura-pt gift-2" data-date="12/12/15" data-number="2">
-          <a href="#turtledoves"><span class="number">2</span></a>
+        <li class="gift tk-futura-pt gift-2 enabled" data-date="12/12/15" data-number="2">
+          <a href="#day-2"><span class="number">2</span></a>
           <span style="background-image:url('images/products/ph.jpg')" class="product"></span>
         </li>
         <li class="gift tk-futura-pt gift-9" data-date="12/12/15" data-number="9">
@@ -141,13 +141,132 @@
     <footer class="footer">
       &copy; Copyright of Telegraph Media Group Limited 2015 | <a href="">Terms and conditions</a>
     </footer>
-    <script id="dayclosed" type="text/x-handlebars-template">
+    
+    <script id="day-closed" type="text/x-handlebars-template">
       <div class="text-center">
         <h1 class="title mb-0 tk-futura-pt">Please come back</h1>
         <p class="subheader tk-futura-pt">Day {{number}} is not yet open</p>
         <p class="highlight">The gift will be available on {{date}}</p>
         <p class="mb-large">Please have a look at a previous day for a selection of fantastic gifts already available from Fenwick.</p>
       </div>
+    </script>
+
+    <script id="day-content" type="text/x-handlebars-template">
+      {{#each days}}
+      <article id="day-{{number}}" class="day tab-pane fade">
+        <div class="container">
+          <header class="text-center">
+            <p class="logo-fenwick"></p>
+            <p class="back tk-futura-pt"><a href="#home" class="load-tab">Advent Calendar</a></p>
+            <h1 class="h1 tk-futura-pt mb-0">Day {{number}}</h1>
+            <h2 class="subheader tk-futura-pt ">{{title}}</h2>
+            <p>{{description}}</p>
+          </header>
+          <ul class="products">
+            {{#each products}}
+              <li class="product">
+                <a href="#product-{{id}}" class="product-image tk-futura-pt">
+                  {{#if link}}<span class="win">WIN</span>{{/if}}
+                  <img src="images/products/{{image}}" alt="Placeholder">
+                </a>
+                <div style="display:none;">
+                  <div class="overlay-product overlay" id="product-{{id}}">
+                    <article class="row">
+                      <div class="col-xs-12 col-md-5">
+                        <img src="images/products/{{image}}" alt="">
+                      </div>
+                      <div class="col-xs-12 col-md-7 text-center">
+                        <h1 class="title mb-0 tk-futura-pt">{{title}}</h1>
+                        <p class="subheader tk-futura-pt">{{info}}</p>
+                        <p class="highlight">{{availability}}</p>
+                        <p class="mb-large">{{description}}</p>
+                        {{#if link}}
+                          <p><a href="{{link}}" class="btn btn-success tk-futura-pt">Win today's prize<!--'--></a></p>
+                        {{/if}}
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+          <section class="exclusive text-center">
+            <h2 class="h2 tk-futura-pt">Exclusive</h2>
+            <p>Sign up to attend an exclusive shopping event at Fenwick and <strong>up to 20% off</strong> your Christmas gifts.</p>
+            <p class="btn-p"><a href="" class="btn btn-success tk-futura-pt">Sign up</a></p>
+          </section>
+        </div>
+      </article>
+      {{/each}}
+    </script>
+
+    <script>
+      var adventData = {
+        startDate:"",
+        days:[{
+          number:2,
+          title:"Two Turtle Doves",
+          description:"Each of the 12 days of Christmas brings a little dose of magic - and a special selection of gifts. For Day 2, Fenwick has teamed up with the Tepegraph to choose the top fragrances. Click on the green 'win' tab below for the chance to win fantastic his and hers products.",
+          products: [{
+            id:'1',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+          },
+          {
+            id:'2',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+          },
+          {
+            id:'3',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+          },
+          {
+            id:'4',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+          },
+          {
+            id:'5',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+          },
+          {
+            id:'6',
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+            link:"http://www.fenwick.co.uk"
+          },
+          {
+            id:"7",
+            image:"ph.jpg",
+            title:"Valentino Donna",
+            info:"FOR HER, 50ML, £69",
+            availability:"Available in selected Fenwick Stores",
+            description:"Bold and powerful, in constrast to the delicate pastel pink liquit it holds, Donna's bottle has a glass surface that has been carfully crafted from cut prisms.",
+            link:"http://www.fenwick.co.uk"
+          }]
+        }]
+      }
     </script>
     
 

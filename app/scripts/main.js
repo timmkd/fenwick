@@ -1,5 +1,6 @@
 // eslint-disable-line no-console
 var ssm = ssm || {};
+var adventData = adventData || {};
 var fen = (function(){
 
   var states = (function(){
@@ -52,7 +53,7 @@ var fen = (function(){
             open($(this));
             $(this).find('a').tab('showQuick');
           } else {
-            overlaySource = $('#dayclosed').html();
+            overlaySource = $('#day-closed').html();
             template = Handlebars.compile(overlaySource);
             context = {
               number:$(this).data('number'), 
@@ -111,6 +112,14 @@ var fen = (function(){
 
   return {
     init: function(){
+
+      var source = $('#day-content').html();
+      var template = Handlebars.compile(source);
+      var context = adventData;
+      var html = template(context);
+      console.log(context);
+      $('.tab-content').append(html);
+
       states.init();
       giftBoxes.init();
       tabs.init();
