@@ -1,10 +1,4 @@
-/* ========================================================================
- * Bootstrap: tab.js v3.3.5
- * http://getbootstrap.com/javascript/#tabs
- * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
+/* Adjusted tabs for Fenwick Advent Calendar */
 
 
 +function ($) {
@@ -25,7 +19,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+    //var $ul      = $('ul:not(.dropdown-menu)')
     var selector = $this.data('target')
 
     if (!selector) {
@@ -33,33 +27,28 @@
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    if ($this.parent('li').hasClass('active')) return
-
-    var $previous = $ul.find('.active:last a')
+    //var $previous = $ul.find('.active:last a')
     var hideEvent = $.Event('hide.bs.tab', {
       relatedTarget: $this[0]
     })
     var showEvent = $.Event('show.bs.tab', {
-      relatedTarget: $previous[0]
+      //relatedTarget: $previous[0]
     })
 
-    $previous.trigger(hideEvent)
+    //$previous.trigger(hideEvent)
     $this.trigger(showEvent)
 
     if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
 
     var $target = $(selector)
 
-    this.activate($this.closest('li'), $ul)
     this.activate($target, $target.parent(), function () {
-      $previous.trigger({
-        type: 'hidden.bs.tab',
-        relatedTarget: $this[0]
-      })
       $this.trigger({
         type: 'shown.bs.tab',
-        relatedTarget: $previous[0]
+        //relatedTarget: $previous[0]
       })
+      //retrigger the isotope layout for .gifts
+      //$('.gifts').isotope('layout');
     })
   }
 

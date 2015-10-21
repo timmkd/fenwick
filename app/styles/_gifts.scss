@@ -38,6 +38,8 @@
 			z-index: 3;
 			transform-origin: 0;
 			transition: all .2s;
+			color:#ccc;
+			font-weight:300;
 
 			&:before {
 				background:url(../images/line-h1-right.png) left top repeat-y;
@@ -76,36 +78,42 @@
 		}
 
 
-
-		&:hover{
-			z-index: 10;
-			
+		&.enabled{
 			a{
-				box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-				transform: rotateY(-40deg);
-				color:$link-hover-color;
-
-				&:before{
-					opacity: .05;
-				}
+				color:$brand-primary;
 			}
-			
-		}
+		
+			&:hover{
+				z-index: 10;
+				
+				a{
+					box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+					transform: rotateY(-40deg);
+					color:$link-hover-color;
 
-		&.open{
-			z-index: 11;
-			
-			a{
-				box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-				transform: rotateY(-80deg);
-				transition: all 1s;
-				color:$link-hover-color;
-
-				&:before{
-					opacity: .2;
+					&:before{
+						opacity: .05;
+					}
 				}
+				
 			}
-			
+
+			&.open{
+				z-index: 11;
+				
+				a{
+					box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+					transform: rotateY(-80deg);
+					transition: all 1s;
+					color:$link-hover-color;
+
+					&:before{
+						opacity: .2;
+					}
+				}
+				
+			}
+
 		}
 
 		.product {
