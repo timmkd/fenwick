@@ -1,0 +1,66 @@
+.day{
+
+	p{
+		max-width:600px;
+		margin:0 auto 40px;
+	}
+
+	.logo-fenwick{	
+		width:77px;
+		height:28px;
+	}
+	.back{
+		a {
+			color:#000;
+			text-transform:uppercase;
+			font-weight: 300;
+
+			&:before{
+				content:"« ";
+				font-size:2em;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.exclusive {
+		max-width:700px;
+		padding:40px 30px;
+		background:#fff;
+		margin:30px auto;
+
+		h2{
+			margin-top:0;
+			margin-bottom:30px;
+		}
+		p{
+			max-width: none;
+		}
+
+		.btn-p{
+			margin-bottom:0;
+		}
+	}
+
+	@media(min-width:$screen-sm){
+		.container {
+			position:relative;
+			padding-top:60px;
+		}
+
+		.back{
+			position:absolute;
+			left:100px;
+			top:40px;
+		}
+
+		.logo-fenwick {
+			position:absolute;
+			right:100px;
+			top:30px;
+		}
+	}
+}

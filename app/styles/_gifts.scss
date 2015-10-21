@@ -1,0 +1,143 @@
+.gifts{
+	padding:0;
+	margin:0 auto;
+	max-width:920px;
+
+	.gift{
+		background:none;
+		list-style: none;
+		margin:0;
+		padding:0;
+		min-height: 115px;
+		width:20%;
+		height:150px;
+		padding:7px;
+		perspective: 1500px;
+
+		&:before{
+			display:block;
+			content:" ";
+			background:#fff;
+			position:absolute;
+			top:7px;
+			left:7px;
+			right:7px;
+			bottom:7px;
+			z-index: 2;
+		}
+
+		a{
+			display:block;
+			background: #fff;
+			margin:7px;
+			position:absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 3;
+			transform-origin: 0;
+			transition: all .2s;
+
+			&:before {
+				background:url(../images/line-h1-right.png) left top repeat-y;
+				background-color: transparent;
+				background-size:100%;
+				opacity: 0;
+				content: " ";
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom:0;
+				transition: all .3s;
+				z-index: 10;
+			}
+			
+			&:hover{
+				text-decoration: none;
+			}
+
+			.number{
+				height: 115px;	
+				background:#fff url(../images/bow_2x.png) center bottom no-repeat;
+				background-size:499px;
+				display:block;
+				margin: 0;
+				position:absolute;
+				top:50%;
+				margin-top:-57px;
+				left:0px;
+				right:0px;	
+				font-size:28px;
+				z-index:3;
+			}
+		}
+
+
+
+		&:hover{
+			z-index: 10;
+			
+			a{
+				box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+				transform: rotateY(-40deg);
+				color:$link-hover-color;
+
+				&:before{
+					opacity: .05;
+				}
+			}
+			
+		}
+
+		&.open{
+			z-index: 11;
+			
+			a{
+				box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+				transform: rotateY(-80deg);
+				transition: all 1s;
+				color:$link-hover-color;
+
+				&:before{
+					opacity: .2;
+				}
+			}
+			
+		}
+
+		.product {
+			background-size:contain;
+			background-repeat:no-repeat;
+			background-position:center center;
+			position:absolute;
+			top:7px;
+			right:7px;
+			bottom:7px;
+			left:7px;
+			z-index: 2;
+			display:block;
+		}
+	}
+
+	@media(min-width:$screen-sm){
+		li{
+			position:absolute;
+		}
+
+		.gift-1{}
+		.gift-2{width:40%;}
+		.gift-3{width:20%;}
+		.gift-4{height:300px;}
+		.gift-5{width:20%;}
+		.gift-6{height:300px}
+		.gift-7{width:20%;}
+		.gift-8{width:40%;}
+		.gift-9{width:20%;}
+		.gift-10{}
+		.gift-11{ height:300px;}
+		.gift-12{width:40%; height:300px;}
+	}
+}

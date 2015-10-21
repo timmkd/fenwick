@@ -1,0 +1,36 @@
+.products {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	.product {
+		list-style-type:none;
+		margin:0 auto 15px;
+		padding:0;
+
+		img{
+			max-width:100%;
+			box-shadow:0 0 10px rgba(0,0,0,.2);
+		}
+	}
+
+	@media(min-width:$screen-sm){
+		text-align:center;
+		.product{
+			margin:0 5px 15px;
+			max-width:140px;		
+			display:inline-block;
+		}
+	}
+	
+	@media(min-width:$screen-md){
+		.product{
+			max-width:120px;		
+		}
+	}
+
+	@media(min-width:$screen-lg){
+		.product{
+			max-width:140px;		
+		}
+	}
+}

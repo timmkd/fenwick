@@ -1,0 +1,12 @@
+.btn{
+	text-transform:uppercase;
+	font-weight:300;
+	font-size: 23px;
+	padding:4px 20px;
+
+	&:after {
+		content:">";
+		padding-left:20px;
+		display:inline-block;
+	}
+}

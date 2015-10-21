@@ -1,0 +1,41 @@
+.h1{
+	display:inline-block;
+	position:relative;
+	font-size:26px;
+	text-transform:uppercase;
+	margin:25px 0 20px;
+	font-weight:300;
+	
+	&:before{
+		content:"";
+		position:absolute;
+		top:14px;
+		left:-270px;
+		height:1px;
+		width:250px;
+		background: url(../images/line-h1-left.png) no-repeat;
+	}
+	&:after{
+		content:"";
+		position:absolute;
+		top:14px;
+		right:-270px;
+		height:1px;
+		width:250px;
+		background: url(../images/line-h1-right.png) no-repeat;
+	}
+}
+
+.h2{
+	font-size:26px;
+	text-transform:uppercase;
+	font-weight:300;
+}
+
+.subheader {
+	font-weight:300;
+	text-transform:uppercase;
+	color:$brand-primary;
+	margin:10px 0 30px;
+	font-size:20px;
+}
