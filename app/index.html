@@ -151,6 +151,15 @@
       </div>
     </script>
 
+    <script id="cal-closed" type="text/x-handlebars-template">
+      <div class="text-center">
+        <h1 class="title mb-0 tk-futura-pt">Please come back</h1>
+        <p class="subheader tk-futura-pt">Advent Calendar is not yet open</p>
+        <p class="highlight">The first gift will be available on {{date}}</p>
+        <p class="mb-large">Each gift will feature a speactacular prize giveaway. Visit <a href="http://telegraph.co.uk/fenwick">telegraph.co.uk/fenwick</a> for your chance to win.</p>
+      </div>
+    </script>
+
     <script id="day-content" type="text/x-handlebars-template">
       {{#each days}}
       <article id="day-{{number}}" class="day tab-pane fade">
@@ -203,7 +212,7 @@
     <script>
       var adventData = {
         startDate:"November 2, 2015",
-        currentDate:"November 5, 2015",
+        currentDate:"November 7, 2015",
         days:[{
           number:2,
           title:"Two Turtle Doves",

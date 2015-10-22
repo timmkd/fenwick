@@ -3,9 +3,23 @@ var ssm = ssm || {};
 var adventData = adventData || {};
 var fen = (function(){
   var currentDate = typeof adventData.currentDate !== "undefined" ? new Date(adventData.currentDate).setHours(0,0,0,0) : new Date().setHours(0,0,0,0);
+  var startDate =new Date(adventData.startDate).setHours(0,0,0,0);
   console.log(currentDate);
 
+  var calIsActive = (function(){
+    if(currentDate >= startDate){
+      return true;
+    }
+    return false;
+  })();
+
+  var convertDate = function(inputFormat) {
+    var d = new Date(inputFormat);
+    return [(d.getDate()), (d.getMonth()+1), d.getFullYear()].join('/');
+  }
+
   var states = (function(){
+    //set responsive states
     return{
       init: function(){
         ssm.addState({
@@ -34,36 +48,33 @@ var fen = (function(){
   })();
 
   var giftBoxes = (function(){
-    var $giftItems = $('.gift');
+    var $giftItems = $('.gift'),
+    $gifts = $('.gifts');
+    
 
     function open($gift){
       $('.gift.open').removeClass('open');
       $gift.addClass('open');
     }
 
+    //go through all .gift items and active them if it is on or after their open date
     function activateViaDate(){
       $giftItems.each(function(){
         var date = new Date($(this).data('date')).setHours(0,0,0,0);
-        if( date < currentDate) {
+        if( date <= currentDate) {
           $(this).addClass('enabled');
         }
       });
     }
 
-    return{
-      init: function(){
-        activateViaDate();
+    function giftClick(){
+      $giftItems.on('click',function(e){
+        var overlaySource, template, html, context;
 
-        $('.gifts').isotope({
-          itemSelector: '.gift',
-          layoutMode: 'packery'
-        });
+        e.preventDefault();
 
-        $('.gift').on('click',function(e){
-          var overlaySource, template, html, context;
-
-          e.preventDefault();
-
+        //if calendar is active we can open active gifts
+        if(calIsActive){
           if($(this).hasClass('enabled')){
             open($(this));
             $(this).find('a').tab('showQuick');
@@ -72,7 +83,7 @@ var fen = (function(){
             template = Handlebars.compile(overlaySource);
             context = {
               number:$(this).data('number'), 
-              date:$(this).data('date')
+              date:convertDate($(this).data('date'))
             };
             html = template(context);
             
@@ -86,7 +97,38 @@ var fen = (function(){
               $.colorbox({width:"600", opacity:0.29, html: html});
             }
           }
+        } else {
+          overlaySource = $('#cal-closed').html();
+          template = Handlebars.compile(overlaySource);
+          context = {
+            date:convertDate(adventData.startDate)
+          };
+          html = template(context);
+          
+          if(ssm.getState('narrow').active){
+            $.colorbox({width:"300", opacity:0.29, html: html});
+          }
+          if(ssm.getState('medium').active){
+            $.colorbox({width:"500", opacity:0.29, html: html});
+          }
+          if(ssm.getState('wide').active){
+            $.colorbox({width:"600", opacity:0.29, html: html});
+          }
+        }
         });
+    }
+
+    return{
+      init: function(){
+        activateViaDate();
+        giftClick();
+
+        $gifts.isotope({
+          itemSelector: '.gift',
+          layoutMode: 'packery'
+        });
+
+        
       }
     };
   })();
