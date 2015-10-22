@@ -2,6 +2,8 @@
 var ssm = ssm || {};
 var adventData = adventData || {};
 var fen = (function(){
+  var currentDate = typeof adventData.currentDate !== "undefined" ? new Date(adventData.currentDate).setHours(0,0,0,0) : new Date().setHours(0,0,0,0);
+  console.log(currentDate);
 
   var states = (function(){
     return{
@@ -32,13 +34,26 @@ var fen = (function(){
   })();
 
   var giftBoxes = (function(){
+    var $giftItems = $('.gift');
+
     function open($gift){
       $('.gift.open').removeClass('open');
       $gift.addClass('open');
     }
 
+    function activateViaDate(){
+      $giftItems.each(function(){
+        var date = new Date($(this).data('date')).setHours(0,0,0,0);
+        if( date < currentDate) {
+          $(this).addClass('enabled');
+        }
+      });
+    }
+
     return{
       init: function(){
+        activateViaDate();
+
         $('.gifts').isotope({
           itemSelector: '.gift',
           layoutMode: 'packery'
@@ -117,7 +132,6 @@ var fen = (function(){
       var template = Handlebars.compile(source);
       var context = adventData;
       var html = template(context);
-      console.log(context);
       $('.tab-content').append(html);
 
       states.init();

@@ -53,7 +53,7 @@
   }
 
   Tab.prototype.showDelayed = function () {
-    Tab.TRANSITION_DURATION = 1500
+    Tab.TRANSITION_DURATION = 1700
     this.show()
   }
 
