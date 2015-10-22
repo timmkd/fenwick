@@ -61,8 +61,11 @@ var fen = (function(){
     function activateViaDate(){
       $giftItems.each(function(){
         var date = new Date($(this).data('date')).setHours(0,0,0,0);
+        var id = $(this).find('a').attr('href');
+        var $navMenuLink = $('.navbar-collapse a[href="'+id+'"]');
         if( date <= currentDate) {
-          $(this).addClass('enabled');
+          $(this).removeClass('disabled');
+          $navMenuLink.removeClass('disabled');
         }
       });
     }
@@ -71,11 +74,11 @@ var fen = (function(){
       $giftItems.on('click',function(e){
         var overlaySource, template, html, context;
 
-        e.preventDefault();
+        //e.preventDefault();
 
         //if calendar is active we can open active gifts
         if(calIsActive){
-          if($(this).hasClass('enabled')){
+          if(!$(this).hasClass('disabled')){
             open($(this));
             $(this).find('a').tab('showQuick');
           } else {
@@ -88,7 +91,7 @@ var fen = (function(){
             html = template(context);
             
             if(ssm.getState('narrow').active){
-              $.colorbox({width:"300", opacity:0.29, html: html});
+              $.colorbox({width:"100%", opacity:0.29, html: html});
             }
             if(ssm.getState('medium').active){
               $.colorbox({width:"500", opacity:0.29, html: html});
@@ -138,21 +141,38 @@ var fen = (function(){
       init: function(){
 
         $('.load-tab').on('click',function(e){
-          e.preventDefault();
-          $('.gift.open').removeClass('open');
-          $(this).tab('showQuick');
+          //e.preventDefault();
+          if(!$(this).hasClass('disabled')){
+            $('.gift.open').removeClass('open');
+            $(this).tab('showQuick');
+          }
         });
       }
     };
   })();
 
-  var overlays = (function(){
+  var header = (function(){
+    return{
+      init: function(){
+        $('.header .navbar-collapse a').on('click',function(){
+          if(!$(this).hasClass('disabled')){
+            $('.navbar-toggle').click();
+          }
+        });
+      }
+    };
+  })();
+
+  var products = (function(){
     return{
       init: function(){
 
-        $(".product-image").on('click',function(){
+        $(".product-image").on('click',function(e){
           if(ssm.getState('narrow').active){
-            //$(".inline-overlay").colorbox({inline:true, width:"900", opacity:0.29});
+            e.preventDefault();
+            $('.products .show').removeClass('show');
+            $($(this).attr('href')).addClass('show');
+            conso
           }
           if(ssm.getState('medium').active){
             $.colorbox({inline:true, width:"600", opacity:0.29, href: $(this).attr('href')});
@@ -179,7 +199,8 @@ var fen = (function(){
       states.init();
       giftBoxes.init();
       tabs.init();
-      overlays.init();
+      products.init();
+      header.init();
 
     }
   }

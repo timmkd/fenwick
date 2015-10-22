@@ -2,7 +2,7 @@
 
 	p{
 		max-width:600px;
-		margin:0 auto 40px;
+		margin:0 auto 20px;
 	}
 
 	.logo-fenwick{	
@@ -44,8 +44,31 @@
 			margin-bottom:0;
 		}
 	}
+	@media(max-width:$screen-xs-max){
+
+		.day-body {
+			display:table;
+
+			.exclusive {
+				display:table-header-group;
+
+				.exclusive-wrapper{
+					padding:30px;
+				}
+			}
+		}
+
+		.products {
+			margin-top:40px;
+		}
+	}
 
 	@media(min-width:$screen-sm){
+
+		p{
+			margin:0 auto 40px;
+		}
+
 		.container {
 			position:relative;
 			padding-top:60px;
@@ -62,5 +85,6 @@
 			right:100px;
 			top:30px;
 		}
+
 	}
 }

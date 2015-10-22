@@ -1,28 +1,32 @@
 .h1{
 	display:inline-block;
 	position:relative;
-	font-size:26px;
+	font-size:30    px;
 	text-transform:uppercase;
 	margin:25px 0 20px;
 	font-weight:300;
-	
-	&:before{
-		content:"";
-		position:absolute;
-		top:14px;
-		left:-270px;
-		height:1px;
-		width:250px;
-		background: url(../images/line-h1-left.png) no-repeat;
-	}
-	&:after{
-		content:"";
-		position:absolute;
-		top:14px;
-		right:-270px;
-		height:1px;
-		width:250px;
-		background: url(../images/line-h1-right.png) no-repeat;
+
+	@media(min-width:$screen-sm){
+		font-size:26px;
+
+		&:before{
+			content:"";
+			position:absolute;
+			top:14px;
+			left:-270px;
+			height:1px;
+			width:250px;
+			background: url(../images/line-h1-left.png) no-repeat;
+		}
+		&:after{
+			content:"";
+			position:absolute;
+			top:14px;
+			right:-270px;
+			height:1px;
+			width:250px;
+			background: url(../images/line-h1-right.png) no-repeat;
+		}
 	}
 }
 
@@ -36,18 +40,30 @@
 	font-weight:300;
 	text-transform:uppercase;
 	color:$brand-primary;
-	margin:10px 0 30px;
+	margin:10px 0 20px;
 	font-size:20px;
+
+	@media(min-width:$screen-sm){
+		margin:10px 0 30px;
+	}
 }
 
 .title{
-	font-size:40px;
+	font-size:30px;
 	font-weight:300;
 	text-transform:uppercase;
+
+	@media(min-width:$screen-sm){
+		font-size:40px;
+	}
 }
 
 .highlight {
 	font-weight: bold;
 	font-size:1.2em;
-	margin-bottom:30px;
+	margin-bottom:20px;
+
+	@media(min-width:$screen-sm){
+		margin-bottom:30px;
+	}
 }

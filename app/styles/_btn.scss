@@ -1,12 +1,16 @@
 .btn{
 	text-transform:uppercase;
 	font-weight:300;
-	font-size: 23px;
+	font-size: 16px;
 	padding:4px 20px;
 
 	&:after {
 		content:">";
 		padding-left:20px;
 		display:inline-block;
+	}
+
+	@media(min-width:$screen-sm){
+		font-size: 23px;
 	}
 }

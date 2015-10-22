@@ -48,7 +48,8 @@
         //relatedTarget: $previous[0]
       })
       //retrigger the isotope layout for .gifts
-      //$('.gifts').isotope('layout');
+      $('.gifts').isotope('layout');
+      $('html,body').animate({scrollTop: 0}, 300);
     })
   }
 

@@ -9,7 +9,7 @@
 		margin:0;
 		padding:0;
 		min-height: 115px;
-		width:20%;
+		width:50%;
 		height:150px;
 		padding:7px;
 		perspective: 1500px;
@@ -38,7 +38,7 @@
 			z-index: 3;
 			transform-origin: 0;
 			transition: all .2s;
-			color:#ccc;
+			color:$brand-primary;
 			font-weight:300;
 
 			&:before {
@@ -77,22 +77,53 @@
 			}
 		}
 
-
-		&.enabled{
+		&:hover{
+			z-index: 10;
+			
 			a{
-				color:$brand-primary;
+				box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+				transform: rotateY(-40deg);
+				color:$link-hover-color;
+
+				&:before{
+					opacity: .05;
+				}
+			}
+			
+		}
+
+		&.open{
+			z-index: 11;
+			
+			a{
+				box-shadow: 0 0 20px rgba(0, 0, 0, .3);
+				transform: rotateY(-80deg);
+				transition: all 1s;
+				color:$link-hover-color;
+
+				&:before{
+					opacity: .2;
+				}
+			}
+			
+		}
+
+
+		&.disabled{
+			a{
+				color:#ccc;
 			}
 		
 			&:hover{
 				z-index: 10;
 				
 				a{
-					box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-					transform: rotateY(-40deg);
-					color:$link-hover-color;
+					box-shadow: none;
+					transform: none;
+					color:#ccc;
 
 					&:before{
-						opacity: .05;
+						opacity: 0;
 					}
 				}
 				
@@ -102,13 +133,12 @@
 				z-index: 11;
 				
 				a{
-					box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-					transform: rotateY(-80deg);
-					transition: all 1s;
-					color:$link-hover-color;
+					box-shadow: none;
+					transform: none;
+					color:#ccc;
 
 					&:before{
-						opacity: .2;
+						opacity: 0;
 					}
 				}
 				
@@ -130,17 +160,36 @@
 		}
 	}
 
+
+	//widths and heights
+	.gift-1{width:50%;}
+	.gift-2{width:50%; height:300px}
+	.gift-3{width:100%;}
+	.gift-4{}
+	.gift-5{height:300px}
+	.gift-6{height:300px}
+	.gift-7{}
+	.gift-8{width:100%}
+	.gift-9{}
+	.gift-10{}
+	.gift-11{}
+	.gift-12{height:300px;}
+
 	@media(min-width:$screen-sm){
 		li{
 			position:absolute;
 		}
 
+		.gift{
+			width:20%;
+		}
+
 		.gift-1{}
-		.gift-2{width:40%;}
+		.gift-2{width:40%; height:150px; }
 		.gift-3{width:20%;}
 		.gift-4{height:300px;}
-		.gift-5{width:20%;}
-		.gift-6{height:300px}
+		.gift-5{width:20%; height:150px;}
+		.gift-6{}
 		.gift-7{width:20%;}
 		.gift-8{width:40%;}
 		.gift-9{width:20%;}
