@@ -47,6 +47,9 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'postcss']
+      },
+      jshint: {
+        files: ['<%= config.app %>/scripts/main.js']
       }
     },
 
@@ -112,14 +115,8 @@ module.exports = function (grunt) {
       server: '.tmp'
     },
 
-    // Make sure code styles are up to par and there are no obvious mistakes
-    eslint: {
-      target: [
-        'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
-      ]
+    jshint: {
+      all: ['<%= config.app %>/scripts/main.js']
     },
 
 
@@ -356,7 +353,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.loadNpmTasks('assemble');
+grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
@@ -389,8 +386,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'browserSync:test',
-      'mocha'
+      'browserSync:test'
     ]);
   });
 
@@ -411,7 +407,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:eslint',
     'test',
     'build'
   ]);
