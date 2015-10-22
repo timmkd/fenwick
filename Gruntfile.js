@@ -49,7 +49,8 @@ module.exports = function (grunt) {
         tasks: ['newer:copy:styles', 'postcss']
       },
       jshint: {
-        files: ['<%= config.app %>/scripts/main.js']
+        files: ['<%= config.app %>/scripts/main.js'],
+        task: ['jshint']
       }
     },
 
