@@ -110,8 +110,15 @@
 
 
 		&.disabled{
+
+
 			a{
-				color:#ccc;
+				color:#000;
+			
+				.number {
+					opacity: .5;
+				}
+
 			}
 		
 			&:hover{
@@ -120,7 +127,7 @@
 				a{
 					box-shadow: none;
 					transform: none;
-					color:#ccc;
+					color:#000;
 
 					&:before{
 						opacity: 0;
