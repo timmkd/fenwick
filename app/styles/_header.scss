@@ -1,35 +1,4 @@
-html {
-	background:#eee url(../images/bg.jpg);
-	background-size:cover;
-	background-repeat:no-repeat;
-	width:100%;
-	height:100%;
-	overflow-x:hidden;
-}
 
-body{
-	background:none;
-	font-family:Georgia;
-	line-height:1.6;
-	font-size:15px;
-}
-
-.container {
-	@media(min-width:$screen-sm){
-		width: auto;
-		max-width:$container-sm;
-	}
-
-	@media(min-width:$screen-md){
-		width: auto;
-		max-width:$container-md;
-	}
-
-	@media(min-width:$screen-lg){
-		width: auto;
-		max-width:$container-lg;
-	}
-}
 
 .header{
 	background:#090909;
@@ -188,11 +157,4 @@ body{
 		}
 	}
 
-}
-
-.footer {
-	font-size:10px;
-	text-align:center;
-	margin-top:40px;
-	padding:0 30px 30px;
 }
