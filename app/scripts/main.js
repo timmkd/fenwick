@@ -4,7 +4,6 @@ var adventData = adventData || {};
 var fen = (function(){
   var currentDate = typeof adventData.currentDate !== "undefined" ? new Date(adventData.currentDate).setHours(0,0,0,0) : new Date().setHours(0,0,0,0);
   var startDate =new Date(adventData.startDate).setHours(0,0,0,0);
-  console.log(currentDate);
 
   var calIsActive = (function(){
     if(currentDate >= startDate){
@@ -100,6 +99,9 @@ var fen = (function(){
               $.colorbox({width:"600", opacity:0.29, html: html});
             }
           }
+          //analytics
+          ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number'), 'open');
+
         } else {
           overlaySource = $('#cal-closed').html();
           template = Handlebars.compile(overlaySource);
@@ -117,6 +119,10 @@ var fen = (function(){
           if(ssm.getState('wide').active){
             $.colorbox({width:"600", opacity:0.29, html: html});
           }
+
+          //analytics
+          ga('send', 'event', 'advent-calendar', 'click', 'Day' + $(this).data('number'), 'closed');
+
         }
         });
     }
@@ -145,7 +151,15 @@ var fen = (function(){
           if(!$(this).hasClass('disabled')){
             $('.gift.open').removeClass('open');
             $(this).tab('showQuick');
-          }
+
+            if(!$(this).hasClass('select-day')){
+              //analytics - click an open date
+              ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number'), 'open');
+            }
+           } else {
+             //analytics - click a closed date
+            ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number'), 'closed');
+           }
         });
       }
     };
