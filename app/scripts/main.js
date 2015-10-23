@@ -62,6 +62,7 @@ var fen = (function(){
         var date = new Date($(this).data('date')).setHours(0,0,0,0);
         var id = $(this).find('a').attr('href');
         var $navMenuLink = $('.navbar-collapse a[href="'+id+'"]');
+          console.log(date, currentDate);
         if( date <= currentDate) {
           $(this).removeClass('disabled');
           $navMenuLink.removeClass('disabled');
@@ -100,7 +101,7 @@ var fen = (function(){
             }
           }
           //analytics
-          ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number'), 'open');
+          ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number') + ' - open');
 
         } else {
           overlaySource = $('#cal-closed').html();
@@ -121,7 +122,7 @@ var fen = (function(){
           }
 
           //analytics
-          ga('send', 'event', 'advent-calendar', 'click', 'Day' + $(this).data('number'), 'closed');
+          ga('send', 'event', 'advent-calendar', 'click', 'Day' + $(this).data('number') + ' - closed');
 
         }
         });
@@ -152,7 +153,7 @@ var fen = (function(){
             $('.gift.open').removeClass('open');
             $(this).tab('showQuick');
 
-            if(!$(this).hasClass('select-day')){
+            if($(this).hasClass('select-day')){
               //analytics - click an open date
               ga('send', 'event', 'advent-calendar', 'click', 'Day ' + $(this).data('number'), 'open');
             }
@@ -186,7 +187,6 @@ var fen = (function(){
             e.preventDefault();
             $('.products .show').removeClass('show');
             $($(this).attr('href')).addClass('show');
-            conso
           }
           if(ssm.getState('medium').active){
             $.colorbox({inline:true, width:"600", opacity:0.29, href: $(this).attr('href')});
