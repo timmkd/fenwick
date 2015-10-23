@@ -240,7 +240,7 @@ module.exports = function (grunt) {
           removeAttributeQuotes: true,
           removeCommentsFromCDATA: true,
           removeEmptyAttributes: true,
-          removeOptionalTags: true,
+          removeOptionalTags: false,
           // true would impact styles with attribute selectors
           removeRedundantAttributes: false,
           useShortDoctype: true
@@ -404,8 +404,7 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
     'copy:dist',
     'modernizr',
     'filerev',
-    'usemin',
-    'htmlmin'
+    'usemin'
   ]);
 
   grunt.registerTask('default', [
