@@ -30,6 +30,7 @@
 			    font-weight: 300;
 			    transform: rotate(-45deg);
 			    width: 90px;
+			    z-index:1;
 			}
 			
 			&:hover {
@@ -84,11 +85,21 @@
 	@media(min-width:$screen-sm){
 		.product{
 			margin:0 5px 15px;
+			width:300px;
 			max-width:140px;		
 			display:inline-block;
 
 			.product-image{
 				display: block;
+				height:200px;
+				position:relative;
+				
+				img{
+					position:absolute;
+					left:0;
+					top:50%;
+					transform: translate(0,-50%);
+				}
 			}
 		}
 		.product-info {
